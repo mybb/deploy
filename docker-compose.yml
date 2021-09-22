@@ -1,12 +1,22 @@
 services:
   php:
-    build:
-      context: ./php/8.0
-      args:
-        - XDEBUG=1
+    image: webdevops/php-dev:8.0-alpine
     volumes:
       - "${SOURCE_PATH:-../mybb}:/var/www/html"
-      - "./php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini"
+    environment:
+      - PHP_MAX_EXECUTION_TIME=0
+      - php.html_errors=1
+      - XDEBUG_MODE=debug
+      - XDEBUG_CLIENT_HOST=host.docker.internal
+      - XDEBUG_START_WITH_REQUEST=1
+#  php:
+#    build:
+#      context: ./php/8.0
+#      args:
+#        - XDEBUG=1
+#    volumes:
+#      - "${SOURCE_PATH:-../mybb}:/var/www/html"
+#      - "./php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini"
   nginx:
     image: nginx:latest
     ports:
