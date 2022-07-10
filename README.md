@@ -7,25 +7,39 @@ Development stack (PHP interpreter, web server, database server) for the [MyBB f
 2. Clone/download this repository on your computer, placing it next to the MyBB source code directory (which can be a cloned [`mybb/mybb` repository](https://github.com/mybb/mybb)):
 
    ```
-   git/
-     mybb/
-     deploy/
+   .
+   ├── mybb/
+   └── deploy/
    ```
 
 3. In the `deploy/` directory, run:
 
    ```sh
-   docker compose up -d
+   docker compose up
    ```
 
-Once the services are running, MyBB should be available at `http://localhost:8080`.
+   Once the services are running, MyBB should be available at `http://localhost:8080`.
 
-The following database is available for MyBB installation:
-- Database Engine: PostgreSQL
-- Database Host: `postgresql`
-- Database Name: `mybb`
-- Database User: `mybb`
-- Database Password: `mybb`
+## Database Systems
+The following database engines are available for MyBB installation:
+- **PostgreSQL** (enabled by default):
+  - Database Host: `postgresql`
+  - Database Name: `mybb`
+  - Database User: `mybb`
+  - Database Password: `mybb`
+- **MySQL**:
+  - Database Host: `mysql`
+  - Database Name: `mybb`
+  - Database User: `mybb`
+  - Database Password: `mybb`
+- **SQLite** (if supported by the PHP configuration)
+
+
+By default, only the PostgreSQL service is started. To start the MySQL service, include the `db.mysql` profile in the `.env` file:
+```dotenv
+COMPOSE_PROFILES=php.prebuilt,db.mysql
+```
+and restart.
 
 ## Switching PHP Versions
 By default, PHP 8.0 is used. To switch the PHP version, change it in the `.env` file (see [available X.Y versions](https://dockerfile.readthedocs.io/en/latest/content/DockerImages/dockerfiles/php-dev.html#docker-image-tags)):
@@ -44,13 +58,6 @@ COMPOSE_PROFILES=php.custom,db.postgresql
 and build it using
 ```sh
 docker compose build
-```
-and restart.
-
-## Enabling Database Systems
-By default, only the PostgreSQL service is started. To also start the MySQL service, include the `db.mysql` profile in the `.env` file:
-```dotenv
-COMPOSE_PROFILES=php.prebuilt,db.mysql
 ```
 and restart.
 
