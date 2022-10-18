@@ -19,6 +19,7 @@ services:
       args:
         - PHP_VERSION=${PHP_VERSION:-8.0}
         - XDEBUG=1
+        - XDEBUG_VERSION=${XDEBUG_VERSION:-}
     volumes:
       - "${SOURCE_PATH:-../mybb}:/var/www/html"
       - "./php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini"

@@ -69,6 +69,7 @@ Name | Default | Description
 `SOURCE_PATH` | `../mybb` | Path to served files
 `PHP_VERSION` | `8.0` | PHP version to use. Depends on available base images
 `XDEBUG` | `1` | Whether to install [Xdebug](https://xdebug.org/) when building a custom PHP image
+`XDEBUG_VERSION` | empty string | Which version of the [Xdebug Pecl package](https://pecl.php.net/package/xdebug) to install when building a custom PHP image (see [compatibility](https://xdebug.org/docs/compat))
 `NGINX_PUBLISHED_PORT` | `8080` | The port accessible from the host machine 
 `POSTGRESQL_PUBLISHED_PORT` | `6432` | The port accessible from the host machine
 `MYSQL_PUBLISHED_PORT` | `4306` | The port accessible from the host machine

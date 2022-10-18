@@ -3,6 +3,7 @@ ARG PHP_VERSION=8.0
 FROM php:${PHP_VERSION}-fpm-alpine
 
 ARG XDEBUG=false
+ARG XDEBUG_VERSION
 
 RUN set -ex; \
 	\
@@ -48,9 +49,18 @@ RUN { \
 	} > /usr/local/etc/php/conf.d/mybb-recommended.ini
 
 RUN if [ "$XDEBUG" = 1 ] ; then \
+		set -ex; \
 		apk add --no-cache pcre-dev ${PHPIZE_DEPS}; \
-		pecl install xdebug; \
+	fi ;
+
+RUN if [ "$XDEBUG" = 1 ] ; then \
+		set -ex; \
+		apk add --update linux-headers; \
+		pecl install xdebug${XDEBUG_VERSION:+-}${XDEBUG_VERSION}; \
 		docker-php-ext-enable xdebug; \
+	fi ;
+
+RUN if [ "$XDEBUG" = 1 ] ; then \
 		apk del pcre-dev ${PHPIZE_DEPS}; \
 	fi ;
 
