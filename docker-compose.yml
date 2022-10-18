@@ -1,6 +1,6 @@
 services:
   php_prebuilt:
-    profiles: ['php.prebuilt']
+    profiles: ["php.prebuilt"]
     hostname: php
     image: webdevops/php-dev:${PHP_VERSION:-8.0}-alpine
     volumes:
@@ -12,7 +12,7 @@ services:
       - XDEBUG_CLIENT_HOST=host.docker.internal
       - XDEBUG_START_WITH_REQUEST=1
   php_custom:
-    profiles: ['php.custom']
+    profiles: ["php.custom"]
     hostname: php
     build:
       context: ./php/8.0
