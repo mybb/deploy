@@ -42,7 +42,7 @@ COMPOSE_PROFILES=php.prebuilt,db.mysql
 and restart.
 
 ## Switching PHP Versions
-By default, PHP 8.0 is used. To switch the PHP version, change it in the `.env` file (see [available X.Y versions](https://dockerfile.readthedocs.io/en/latest/content/DockerImages/dockerfiles/php-dev.html#docker-image-tags)):
+To switch the PHP version, change it in the `.env` file (see [available X.Y versions](https://dockerfile.readthedocs.io/en/latest/content/DockerImages/dockerfiles/php-dev.html#docker-image-tags)):
 ```dotenv
 PHP_VERSION=7.4
 ```
@@ -67,7 +67,7 @@ The following variables can be set in the `.env` file:
 Name | Default | Description
 ---|---|---
 `SOURCE_PATH` | `../mybb` | Path to served files
-`PHP_VERSION` | `8.0` | PHP version to use. Depends on available base images
+`PHP_VERSION` | `8.2` | PHP version to use. Depends on available base images
 `XDEBUG` | `1` | Whether to install [Xdebug](https://xdebug.org/) when building a custom PHP image
 `XDEBUG_VERSION` | empty string | Which version of the [Xdebug Pecl package](https://pecl.php.net/package/xdebug) to install when building a custom PHP image (see [compatibility](https://xdebug.org/docs/compat))
 `NGINX_PUBLISHED_PORT` | `8080` | The port accessible from the host machine 
