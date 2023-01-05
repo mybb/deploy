@@ -73,4 +73,4 @@ Name | Default | Description
 `NGINX_PUBLISHED_PORT` | `8080` | The port accessible from the host machine 
 `POSTGRESQL_PUBLISHED_PORT` | `6432` | The port accessible from the host machine
 `MYSQL_PUBLISHED_PORT` | `4306` | The port accessible from the host machine
-`COMPOSE_PROFILES` | `php.prebuilt,db.postgresql` | PHP image (`prebuilt` or `custom`) and database service (`postgresql` or `mysql`) to use
+`COMPOSE_PROFILES` | `php.prebuilt,composer,db.postgresql` | - PHP image (`prebuilt` or `custom`)<br>- auto-install Composer dependencies<br>- database service (`postgresql` or `mysql`)
