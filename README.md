@@ -3,7 +3,7 @@
 Development stack (PHP interpreter, web server, database server) for the [MyBB forum software](https://mybb.com). Not for production use.
 
 ## Quick Start
-1. Install the [Docker Engine](https://docs.docker.com/engine/install/) and [Docker Compose](https://docs.docker.com/compose/install/).
+1. Install [**Docker Desktop**](https://www.docker.com/products/docker-desktop/) (or [Docker Engine](https://docs.docker.com/engine/install/) + [Docker Compose](https://docs.docker.com/compose/install/)).
 2. Clone/download this repository on your computer, placing it next to the MyBB source code directory (which can be a cloned [`mybb/mybb` repository](https://github.com/mybb/mybb)):
 
    ```
