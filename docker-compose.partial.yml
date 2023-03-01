@@ -1,0 +1,11 @@
+services:
+  php_custom:
+    build:
+      context: ./php/8.0
+      args:
+        - PHP_VERSION=${PHP_VERSION:-8.0}
+        - XDEBUG=${XDEBUG:-1}
+        - XDEBUG_VERSION=${XDEBUG_VERSION:-}
+
+  php_prebuilt:
+    image: webdevops/php-dev:${PHP_VERSION:-8.0}-alpine

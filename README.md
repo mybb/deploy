@@ -18,7 +18,7 @@ Development stack (PHP interpreter, web server, database server) for the [MyBB f
    docker compose up
    ```
 
-   Once the services are running, MyBB should be available at `http://localhost:8080`.
+   Once the services are running, MyBB should be available at [`http://localhost:8080`](http://localhost:8080).
 
 ## Database Systems
 The following database engines are available for MyBB installation:
@@ -37,7 +37,7 @@ The following database engines are available for MyBB installation:
 
 By default, only the PostgreSQL service is started. To start the MySQL service, include the `db.mysql` profile in the `.env` file:
 ```dotenv
-COMPOSE_PROFILES=php.prebuilt,db.mysql
+COMPOSE_PROFILES=db.mysql
 ```
 and restart.
 
@@ -50,12 +50,12 @@ PHP_VERSION=7.4
 and restart the container with `docker compose up -d`.
 
 ### Using Custom Images
-To use PHP versions not available in the pre-built images, but included in an [official PHP base image](https://hub.docker.com/_/php?tab=tags&page=1&ordering=last_updated), use the  `php.custom` profile:
+To use PHP versions not available in the pre-built images, but included in an [official PHP base image](https://hub.docker.com/_/php?tab=tags&page=1&ordering=last_updated), change the `PHP_IMAGE` variable to `custom` in the `.env` file:
 ```dotenv
+PHP_IMAGE=custom
 PHP_VERSION=8.1.0RC2
-COMPOSE_PROFILES=php.custom,db.postgresql
 ```
-and build it using
+and build the image using
 ```sh
 docker compose build
 ```
@@ -67,10 +67,12 @@ The following variables can be set in the `.env` file:
 Name | Default | Description
 ---|---|---
 `SOURCE_PATH` | `../mybb` | Path to served files
+`PHP_IMAGE` | `prebuilt` | Base image for the PHP service (`prebuilt` or `custom`)
 `PHP_VERSION` | `8.2` | PHP version to use. Depends on available base images
+`COMPOSER_NO_DEV` | `1` | Equivalent to `--no-dev` for `composer install` when set to `1`
 `XDEBUG` | `1` | Whether to install [Xdebug](https://xdebug.org/) when building a custom PHP image
 `XDEBUG_VERSION` | empty string | Which version of the [Xdebug Pecl package](https://pecl.php.net/package/xdebug) to install when building a custom PHP image (see [compatibility](https://xdebug.org/docs/compat))
 `NGINX_PUBLISHED_PORT` | `8080` | The port accessible from the host machine 
 `POSTGRESQL_PUBLISHED_PORT` | `6432` | The port accessible from the host machine
 `MYSQL_PUBLISHED_PORT` | `4306` | The port accessible from the host machine
-`COMPOSE_PROFILES` | `php.prebuilt,composer,db.postgresql` | - PHP image (`prebuilt` or `custom`)<br>- auto-install Composer dependencies<br>- database service (`postgresql` or `mysql`)
+`COMPOSE_PROFILES` | `db.postgresql,composer,install` | - database service (`postgresql` or `mysql`)<br>- auto-install Composer dependencies<br>-auto-install MyBB (≥ 1.9)
