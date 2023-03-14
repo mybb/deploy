@@ -17,6 +17,7 @@ services:
     volumes:
       - "${SOURCE_PATH:-../mybb}:/var/www/html"
       - "./xdebug:/var/log/xdebug"
+    working_dir: /var/www/html
     environment:
       - PHP_MAX_EXECUTION_TIME=0
       - PHP_DISPLAY_ERRORS=1
