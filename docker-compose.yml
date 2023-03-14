@@ -28,6 +28,7 @@ services:
       - XDEBUG_OUTPUT_DIR=/var/log/xdebug
       - XDEBUG_START_WITH_REQUEST=1
       - PHP_IDE_CONFIG=${PHP_IDE_CONFIG:-}
+      - MYBB_DEV_MODE=${MYBB_DEV_MODE:-}
     depends_on:
       composer:
         condition: service_completed_successfully
@@ -40,6 +41,7 @@ services:
     environment:
       MYBB_INSTALL_ADMINEMAIL: admin@example.localhost
       MYBB_INSTALL_BBURL: http://localhost:${NGINX_PUBLISHED_PORT:-8080}
+      MYBB_DEV_MODE: ${MYBB_DEV_MODE:-}
     volumes:
       - "./scripts:/scripts"
 

@@ -76,3 +76,4 @@ Name | Default | Description
 `POSTGRESQL_PUBLISHED_PORT` | `6432` | The port accessible from the host machine
 `MYSQL_PUBLISHED_PORT` | `4306` | The port accessible from the host machine
 `COMPOSE_PROFILES` | `db.postgresql,composer,install` | - database service (`postgresql` or `mysql`)<br>- auto-install Composer dependencies<br>-auto-install MyBB (≥ 1.9)
+`MYBB_DEV_MODE` | `1` | Enable MyBB's development mode when set to `1`
