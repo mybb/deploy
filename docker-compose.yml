@@ -39,7 +39,6 @@ services:
       service: php
     command: /scripts/mybb-install.sh
     environment:
-      MYBB_INSTALL_ADMINEMAIL: admin@example.localhost
       MYBB_INSTALL_BBURL: http://localhost:${NGINX_PUBLISHED_PORT:-8080}
       MYBB_DEV_MODE: ${MYBB_DEV_MODE:-}
     volumes:
